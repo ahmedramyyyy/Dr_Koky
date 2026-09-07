@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="احجز موعدك مع د. كوثر رامي لطب الأسنان بسهولة.">
+  <title>د. كوثر رامي | احجز موعدك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="العودة إلى الرئيسية"><span class="brand-mark">K</span><span>د. كوثر رامي</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#services">الخدمات</a>
+      <a href="#booking">احجز موعدك</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="header-actions"><button class="language-toggle" type="button" aria-label="Switch to English">English</button><a class="header-cta" href="#booking">احجز موعدك <span>↗</span></a></div>
+    <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero page-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> رعاية مريحة · مواعيد مرنة</p>
+        <h1>ابتسامتك<br><em>تستاهل الأفضل.</em></h1>
+        <p class="hero-intro">رعاية أسنان واضحة ومريحة، مع حجز سريع يناسب وقتك.</p>
+        <a class="primary-button" href="#booking">احجز موعدك <span>↗</span></a>
+      </div>
+      <div class="hero-visual reveal reveal-delay">
+        <div class="hero-image"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1200&auto=format&fit=crop" alt="طبيب أسنان يتحدث مع مريض"></div>
+        <div class="hero-note"><span>الغردقة · مصر</span><span>السبت - الخميس<br>09:00 - 21:00</span></div>
+      </div>
+      <div class="hero-meta"><span>نستقبل حجوزاتك يومياً</span><span class="scroll-label">اكتشف خدماتنا <b>↓</b></span></div>
+    </section>
+
+    <section class="statement page-grid reveal" id="approach">
+      <div class="section-label"><span>01</span><span>طريقتنا</span></div>
+      <div class="statement-content"><h2>رعاية تشعرك <em>بالراحة.</em></h2><p>نسمعك أولاً، نشرح لك كل الخيارات ببساطة، ونضع خطة علاج مناسبة لاحتياجاتك ووقتك.</p><a class="text-link" href="#booking">ابدأ بحجز موعد <span>↗</span></a></div>
+    </section>
+
+    <section class="work" id="services">
+      <div class="section-heading page-grid reveal"><div class="section-label"><span>02</span><span>خدماتنا</span></div><p>كل ما تحتاجه<br>لابتسامة صحية.</p></div>
+      <div class="work-list">
+        <article class="work-item reveal"><div class="work-number">01</div><div class="work-copy"><h3>الكشف والتنظيف</h3><p>فحص دوري وتنظيف احترافي للحفاظ على صحة ابتسامتك.</p><a href="#booking" data-service="الكشف والتنظيف">احجز الآن <span>↗</span></a></div></article>
+        <article class="work-item reveal"><div class="work-number">02</div><div class="work-copy"><h3>تجميل الأسنان</h3><p>حلول طبيعية لتحسين شكل ابتسامتك وزيادة ثقتك.</p><a href="#booking" data-service="تجميل الأسنان">احجز الآن <span>↗</span></a></div></article>
+        <article class="work-item reveal"><div class="work-number">03</div><div class="work-copy"><h3>علاج وترميم</h3><p>علاجات دقيقة لاستعادة الراحة والوظيفة بشكل لطيف.</p><a href="#booking" data-service="علاج وترميم">احجز الآن <span>↗</span></a></div></article>
+      </div>
+    </section>
+
+    <section class="booking page-grid" id="booking"><div class="booking-intro"><p class="eyebrow"><span class="eyebrow-dot"></span> حجز موعد</p><h2>اختار ميعادك<br><em>واحنا نهتم بالباقي.</em></h2><p>املأ البيانات وسنتواصل معك لتأكيد الموعد.</p></div><form id="booking-form" class="booking-form"><label>الاسم بالكامل<input name="name" type="text" placeholder="اكتب اسمك" required></label><label>رقم الهاتف<input name="phone" type="tel" placeholder="01xxxxxxxxx" required></label><label>الخدمة<select name="service" required><option value="">اختر الخدمة</option><option>الكشف والتنظيف</option><option>تجميل الأسنان</option><option>علاج وترميم</option></select></label><div class="form-row"><label>التاريخ<input name="date" type="date" required></label><label>الوقت<select name="time" required><option value="">اختر الوقت</option><option>10:00 صباحاً</option><option>01:00 ظهراً</option><option>05:00 مساءً</option><option>08:00 مساءً</option></select></label></div><button class="primary-button" type="submit">تأكيد طلب الحجز <span>↗</span></button><p class="form-message" role="status"></p></form></section>
+
+    <section class="contact page-grid" id="contact"><div class="contact-top"><p class="eyebrow"><span class="eyebrow-dot"></span> تواصل معنا</p><h2>محتاج مساعدة؟<br><em>كلمنا مباشرة.</em></h2></div><div class="contact-bottom"><a class="email-link" href="tel:+201065331037">01065331037 <span>↗</span></a><div class="contact-details"><span>الغردقة · مصر</span><span>© 2026 د. كوثر رامي</span></div></div></section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark">K</span><span>د. كوثر رامي</span></a><div><a href="#services">الخدمات</a><a href="#booking">الحجز</a><a href="#contact">تواصل معنا</a></div><span class="mono">راحتك أولاً.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
