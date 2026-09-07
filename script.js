@@ -123,9 +123,32 @@ function applyLanguage(language) {
 
 languageToggle.addEventListener('click', () => applyLanguage(currentLanguage === 'ar' ? 'en' : 'ar'));
 
-bookingForm.addEventListener('submit', (event) => {
+bookingForm.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   const formData = new FormData(bookingForm);
-  formMessage.textContent = translations[currentLanguage].message(formData.get('name'), formData.get('phone'));
-  bookingForm.reset();
+
+  try {
+    const response = await fetch('https://formspree.io/f/xyeyneqy', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      formMessage.textContent =
+        translations[currentLanguage].message(
+          formData.get('name'),
+          formData.get('phone')
+        );
+
+      bookingForm.reset();
+    } else {
+      formMessage.textContent = 'حدث خطأ، حاول مرة أخرى.';
+    }
+  } catch (error) {
+    formMessage.textContent = 'حدث خطأ في الاتصال، حاول مرة أخرى.';
+  }
 });
