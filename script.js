@@ -39,7 +39,7 @@ const translations = {
     location: 'الغردقة · مصر', hours: 'السبت - الخميس<br>09:00 - 21:00', daily: 'نستقبل حجوزاتك يومياً', explore: 'اكتشف خدماتنا', approachLabel: 'طريقتنا', approachTitle: 'رعاية تشعرك', approachTitleEm: 'بالراحة.', approachText: 'نسمعك أولاً، نشرح لك كل الخيارات ببساطة، ونضع خطة علاج مناسبة لاحتياجاتك ووقتك.', startBooking: 'ابدأ بحجز موعد', servicesLabel: 'خدماتنا', servicesTitle: 'كل ما تحتاجه<br>لابتسامة صحية.',
     serviceNames: ['الكشف والتنظيف', 'تجميل الأسنان', 'علاج وترميم'], serviceTexts: ['فحص دوري وتنظيف احترافي للحفاظ على صحة ابتسامتك.', 'حلول طبيعية لتحسين شكل ابتسامتك وزيادة ثقتك.', 'علاجات دقيقة لاستعادة الراحة والوظيفة بشكل لطيف.'], timeOptions: ['10:00 صباحاً', '01:00 ظهراً', '05:00 مساءً', '08:00 مساءً'], bookNow: 'احجز الآن',
     bookingLabel: 'حجز موعد', bookingTitle: 'اختار ميعادك', bookingTitleEm: 'واحنا نهتم بالباقي.', bookingText: 'املأ البيانات وسنتواصل معك لتأكيد الموعد.', name: 'الاسم بالكامل', namePlaceholder: 'اكتب اسمك', phone: 'رقم الهاتف', service: 'الخدمة', chooseService: 'اختر الخدمة', date: 'التاريخ', time: 'الوقت', chooseTime: 'اختر الوقت', confirm: 'تأكيد طلب الحجز',
-    contactLabel: 'تواصل معنا', contactTitle: 'محتاج مساعدة؟', contactTitleEm: 'كلمنا مباشرة.', footerBooking: 'الحجز', comfort: 'راحتك أولاً.', toggle: 'English', toggleLabel: 'Switch to English', direction: 'rtl', htmlLang: 'ar', title: 'د. كوثر رامي | احجز موعدك', message: (name, phone) => `تم استلام طلبك يا ${name}، سنتواصل معك على ${phone} لتأكيد الموعد.`
+    contactLabel: 'تواصل معنا', contactTitle: 'محتاج مساعدة؟', contactTitleEm: 'كلمنا مباشرة.', whatsapp: 'واتساب', whatsappLabel: 'التواصل عبر واتساب', whatsappTitle: 'تواصل معنا عبر واتساب', footerBooking: 'الحجز', comfort: 'راحتك أولاً.', toggle: 'English', toggleLabel: 'Switch to English', direction: 'rtl', htmlLang: 'ar', title: 'د. كوثر رامي | احجز موعدك', message: (name, phone) => `تم استلام طلبك يا ${name}، سنتواصل معك على ${phone} لتأكيد الموعد.`
   },
   en: {
     brand: 'Dr. Kawthar Ramy', navigation: ['Services', 'Book an appointment', 'Contact'], appointment: 'Book an appointment',
@@ -47,7 +47,7 @@ const translations = {
     location: 'Hurghada · Egypt', hours: 'Saturday - Thursday<br>09:00 - 21:00', daily: 'Appointments available daily', explore: 'Explore services', approachLabel: 'Our approach', approachTitle: 'Care that feels', approachTitleEm: 'comfortable.', approachText: 'We listen first, explain every option clearly, and build a treatment plan around your needs and schedule.', startBooking: 'Start booking', servicesLabel: 'Our services', servicesTitle: 'Everything you need<br>for a healthy smile.',
     serviceNames: ['Checkup and cleaning', 'Cosmetic dentistry', 'Restorative care'], serviceTexts: ['Regular checkups and professional cleaning to keep your smile healthy.', 'Natural-looking solutions to improve your smile and confidence.', 'Gentle, precise treatments that restore comfort and function.'], timeOptions: ['10:00 AM', '01:00 PM', '05:00 PM', '08:00 PM'], bookNow: 'Book now',
     bookingLabel: 'Book an appointment', bookingTitle: 'Choose your time', bookingTitleEm: 'we will handle the rest.', bookingText: 'Fill in your details and we will contact you to confirm your appointment.', name: 'Full name', namePlaceholder: 'Enter your name', phone: 'Phone number', service: 'Service', chooseService: 'Choose a service', date: 'Date', time: 'Time', chooseTime: 'Choose a time', confirm: 'Confirm booking request',
-    contactLabel: 'Contact us', contactTitle: 'Need help?', contactTitleEm: 'Call us directly.', footerBooking: 'Booking', comfort: 'Your comfort comes first.', toggle: 'العربية', toggleLabel: 'التبديل إلى العربية', direction: 'ltr', htmlLang: 'en', title: 'Dr. Kawthar Ramy | Book an appointment', message: (name, phone) => `Thanks, ${name}. We will contact you at ${phone} to confirm your appointment.`
+    contactLabel: 'Contact us', contactTitle: 'Need help?', contactTitleEm: 'Call us directly.', whatsapp: 'WhatsApp', whatsappLabel: 'Contact us on WhatsApp', whatsappTitle: 'Contact us via WhatsApp', footerBooking: 'Booking', comfort: 'Your comfort comes first.', toggle: 'العربية', toggleLabel: 'التبديل إلى العربية', direction: 'ltr', htmlLang: 'en', title: 'Dr. Kawthar Ramy | Book an appointment', message: (name, phone) => `Thanks, ${name}. We will contact you at ${phone} to confirm your appointment.`
   }
 };
 
@@ -115,6 +115,11 @@ function applyLanguage(language) {
   setLeadingText(document.querySelector('.contact .eyebrow'), text.contactLabel);
   document.querySelector('.contact h2').firstChild.textContent = `${text.contactTitle} `;
   document.querySelector('.contact h2 em').textContent = text.contactTitleEm;
+  document.querySelector('.whatsapp-label').textContent = text.whatsapp;
+  document.querySelectorAll('.whatsapp-link, .whatsapp-float').forEach((element) => {
+    element.setAttribute('aria-label', text.whatsappLabel);
+  });
+  document.querySelector('.whatsapp-float').title = text.whatsappTitle;
   document.querySelectorAll('.site-footer div a').forEach((element, index) => { element.textContent = [text.navigation[0], text.footerBooking, text.navigation[2]][index]; });
   document.querySelector('.contact-details span:first-child').textContent = text.location;
   document.querySelector('.contact-details span:last-child').textContent = language === 'ar' ? '© 2026 د. كوثر رامي' : '© 2026 Dr. Kawthar Ramy';
@@ -123,32 +128,9 @@ function applyLanguage(language) {
 
 languageToggle.addEventListener('click', () => applyLanguage(currentLanguage === 'ar' ? 'en' : 'ar'));
 
-bookingForm.addEventListener('submit', async (event) => {
+bookingForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
   const formData = new FormData(bookingForm);
-
-  try {
-    const response = await fetch('https://formspree.io/f/xyeyneqy', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        Accept: 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      formMessage.textContent =
-        translations[currentLanguage].message(
-          formData.get('name'),
-          formData.get('phone')
-        );
-
-      bookingForm.reset();
-    } else {
-      formMessage.textContent = 'حدث خطأ، حاول مرة أخرى.';
-    }
-  } catch (error) {
-    formMessage.textContent = 'حدث خطأ في الاتصال، حاول مرة أخرى.';
-  }
+  formMessage.textContent = translations[currentLanguage].message(formData.get('name'), formData.get('phone'));
+  bookingForm.reset();
 });
