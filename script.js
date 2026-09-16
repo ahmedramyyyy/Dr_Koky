@@ -30,6 +30,9 @@ document.querySelectorAll('[data-service]').forEach((link) => {
 const bookingForm = document.querySelector('#booking-form');
 const formMessage = document.querySelector('.form-message');
 const languageToggle = document.querySelector('.language-toggle');
+const dateInput = bookingForm.querySelector('[name="date"]');
+const today = new Date();
+dateInput.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 let currentLanguage = 'ar';
 
 const translations = {
@@ -40,6 +43,7 @@ const translations = {
     serviceNames: ['الكشف والتنظيف', 'تجميل الأسنان', 'علاج وترميم'], serviceTexts: ['فحص دوري وتنظيف احترافي للحفاظ على صحة ابتسامتك.', 'حلول طبيعية لتحسين شكل ابتسامتك وزيادة ثقتك.', 'علاجات دقيقة لاستعادة الراحة والوظيفة بشكل لطيف.'], timeOptions: ['10:00 صباحاً', '01:00 ظهراً', '05:00 مساءً', '08:00 مساءً'], bookNow: 'احجز الآن',
     bookingLabel: 'حجز موعد', bookingTitle: 'اختار ميعادك', bookingTitleEm: 'واحنا نهتم بالباقي.', bookingText: 'املأ البيانات وسنتواصل معك لتأكيد الموعد.', name: 'الاسم بالكامل', namePlaceholder: 'اكتب اسمك', phone: 'رقم الهاتف', service: 'الخدمة', chooseService: 'اختر الخدمة', date: 'التاريخ', time: 'الوقت', chooseTime: 'اختر الوقت', confirm: 'تأكيد طلب الحجز',
     contactLabel: 'تواصل معنا', contactTitle: 'محتاج مساعدة؟', contactTitleEm: 'كلمنا مباشرة.', whatsapp: 'واتساب', whatsappLabel: 'التواصل عبر واتساب', whatsappTitle: 'تواصل معنا عبر واتساب', footerBooking: 'الحجز', comfort: 'راحتك أولاً.', toggle: 'English', toggleLabel: 'Switch to English', direction: 'rtl', htmlLang: 'ar', title: 'د. كوثر رامي | احجز موعدك', message: (name, phone) => `تم استلام طلبك يا ${name}، سنتواصل معك على ${phone} لتأكيد الموعد.`
+    , trust: ['شرح واضح قبل كل خطوة', 'مواعيد مرنة تناسب يومك', 'اهتمام حقيقي براحتك'], trustLabel: 'لماذا تختار عيادتنا', faqLabel: 'أسئلة شائعة', faqTitle: 'كل التفاصيل<br>قبل زيارتك.', faqQuestions: ['هل أحتاج إلى حجز مسبق؟', 'كيف يتم تأكيد الموعد؟', 'هل يمكنني اختيار خدمة مختلفة عند الزيارة؟'], faqAnswers: ['نعم، الحجز المسبق يساعدنا على تخصيص الوقت المناسب لك وتقليل وقت الانتظار.', 'بعد إرسال الطلب سنتواصل معك هاتفياً أو عبر واتساب لتأكيد اليوم والوقت.', 'بالتأكيد. نبدأ بفحص بسيط ونشرح لك الخيارات المناسبة قبل اتخاذ أي قرار.']
   },
   en: {
     brand: 'Dr. Kawthar Ramy', navigation: ['Services', 'Book an appointment', 'Contact'], appointment: 'Book an appointment',
@@ -48,6 +52,7 @@ const translations = {
     serviceNames: ['Checkup and cleaning', 'Cosmetic dentistry', 'Restorative care'], serviceTexts: ['Regular checkups and professional cleaning to keep your smile healthy.', 'Natural-looking solutions to improve your smile and confidence.', 'Gentle, precise treatments that restore comfort and function.'], timeOptions: ['10:00 AM', '01:00 PM', '05:00 PM', '08:00 PM'], bookNow: 'Book now',
     bookingLabel: 'Book an appointment', bookingTitle: 'Choose your time', bookingTitleEm: 'we will handle the rest.', bookingText: 'Fill in your details and we will contact you to confirm your appointment.', name: 'Full name', namePlaceholder: 'Enter your name', phone: 'Phone number', service: 'Service', chooseService: 'Choose a service', date: 'Date', time: 'Time', chooseTime: 'Choose a time', confirm: 'Confirm booking request',
     contactLabel: 'Contact us', contactTitle: 'Need help?', contactTitleEm: 'Call us directly.', whatsapp: 'WhatsApp', whatsappLabel: 'Contact us on WhatsApp', whatsappTitle: 'Contact us via WhatsApp', footerBooking: 'Booking', comfort: 'Your comfort comes first.', toggle: 'العربية', toggleLabel: 'التبديل إلى العربية', direction: 'ltr', htmlLang: 'en', title: 'Dr. Kawthar Ramy | Book an appointment', message: (name, phone) => `Thanks, ${name}. We will contact you at ${phone} to confirm your appointment.`
+    , trust: ['Clear guidance at every step', 'Appointments that fit your day', 'Care that puts you first'], trustLabel: 'Why choose our clinic', faqLabel: 'Frequently asked', faqTitle: 'Everything to know<br>before your visit.', faqQuestions: ['Do I need to book in advance?', 'How is my appointment confirmed?', 'Can I choose a different service during my visit?'], faqAnswers: ['Yes. Booking ahead helps us reserve the right time for you and reduce waiting.', 'After you submit the request, we will contact you by phone or WhatsApp to confirm the day and time.', 'Of course. We start with a simple checkup and explain the right options before any decision.']
   }
 };
 
@@ -83,6 +88,8 @@ function applyLanguage(language) {
   document.querySelector('.statement h2 em').textContent = text.approachTitleEm;
   document.querySelector('.statement-content p').textContent = text.approachText;
   setLeadingText(document.querySelector('.text-link'), text.startBooking);
+  document.querySelectorAll('.trust-item span').forEach((element, index) => { element.textContent = text.trust[index]; });
+  document.querySelector('.trust-strip').setAttribute('aria-label', text.trustLabel);
   document.querySelector('.section-heading .section-label span:last-child').textContent = text.servicesLabel;
   document.querySelector('.section-heading p').innerHTML = text.servicesTitle;
   document.querySelectorAll('.work-item').forEach((item, index) => {
@@ -124,13 +131,37 @@ function applyLanguage(language) {
   document.querySelector('.contact-details span:first-child').textContent = text.location;
   document.querySelector('.contact-details span:last-child').textContent = language === 'ar' ? '© 2026 د. كوثر رامي' : '© 2026 Dr. Kawthar Ramy';
   document.querySelector('.mono').textContent = text.comfort;
+  document.querySelector('.faq .section-label span:last-child').textContent = text.faqLabel;
+  document.querySelector('.faq .section-heading p').innerHTML = text.faqTitle;
+  document.querySelectorAll('.faq-item').forEach((item, index) => {
+    item.querySelector('summary').firstChild.textContent = `${text.faqQuestions[index]} `;
+    item.querySelector('p').textContent = text.faqAnswers[index];
+  });
 }
 
-languageToggle.addEventListener('click', () => applyLanguage(currentLanguage === 'ar' ? 'en' : 'ar'));
+languageToggle.addEventListener('click', () => {
+  applyLanguage(currentLanguage === 'ar' ? 'en' : 'ar');
+  menuButton.setAttribute('aria-expanded', 'false');
+  navigation.classList.remove('mobile-open');
+});
 
 bookingForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(bookingForm);
-  formMessage.textContent = translations[currentLanguage].message(formData.get('name'), formData.get('phone'));
-  bookingForm.reset();
+  const submitButton = bookingForm.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.style.opacity = '0.7';
+  fetch(bookingForm.action, { method: 'POST', body: formData, headers: { Accept: 'application/json' } })
+    .then((response) => {
+      if (!response.ok) throw new Error('Request failed');
+      formMessage.textContent = translations[currentLanguage].message(formData.get('name'), formData.get('phone'));
+      bookingForm.reset();
+    })
+    .catch(() => {
+      formMessage.textContent = currentLanguage === 'ar' ? 'تعذر إرسال الطلب حالياً. تواصل معنا عبر واتساب.' : 'The request could not be sent. Please contact us on WhatsApp.';
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.style.opacity = '';
+    });
 });
