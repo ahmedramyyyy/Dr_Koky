@@ -34,9 +34,9 @@ a:hover .icon-arrow { transform: translate(2px, -2px); }
 .hero-copy { padding-top: 5vh; position: relative; z-index: 1; }
 .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; align-items: center; }
 .eyebrow-dot { width: 7px; height: 7px; background: var(--coral); display: inline-block; border-radius: 50%; }
-.hero h1, .statement h2, .booking h2, .contact h2, .section-heading p, .work-copy h3 { font-family: 'Noto Kufi Arabic', 'IBM Plex Sans Arabic', sans-serif; }
+.hero h1, .statement h2, .booking h2, .contact h2, .section-heading p, .work-copy h3, .hero h1 em, .contact h2 em, .statement h2 em, .booking h2 em { font-family: 'Noto Kufi Arabic', 'IBM Plex Sans Arabic', sans-serif; font-style: normal; }
 .hero h1 { font-size: clamp(50px, 7vw, 105px); line-height: 1.12; letter-spacing: -.06em; margin: 36px 0 32px; max-width: 680px; font-weight: 700; }
-.hero h1 em, .contact h2 em, .statement h2 em { font-family: Georgia, serif; font-weight: 400; letter-spacing: -.08em; }
+.hero h1 em, .contact h2 em, .statement h2 em, .booking h2 em { font-weight: 700; letter-spacing: -.04em; }
 .hero-intro { max-width: 300px; font-size: 17px; line-height: 1.5; }
 .primary-button { display: inline-flex; align-items: center; gap: 12px; border: 0; background: var(--coral); color: #fff; padding: 15px 22px; font: 700 13px 'IBM Plex Sans Arabic', Manrope, sans-serif; cursor: pointer; box-shadow: 0 10px 20px rgba(227,107,69,.24); transition: transform .2s, background .2s, box-shadow .2s; }
 .primary-button:hover { background: #c95132; transform: translateY(-3px); box-shadow: 0 14px 25px rgba(227,107,69,.3); }
