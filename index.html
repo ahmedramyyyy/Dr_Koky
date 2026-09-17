@@ -57,14 +57,26 @@
       </div>
     </section>
 
-    <section class="booking page-grid" id="booking"><div class="booking-intro"><p class="eyebrow"><span class="eyebrow-dot"></span> حجز موعد</p><h2>اختار ميعادك<br><em>واحنا نهتم بالباقي.</em></h2><p>املأ البيانات وسنتواصل معك لتأكيد الموعد.</p></div><form id="booking-form" class="booking-form" action="https://formspree.io/f/xyeyneqy" method="POST"><label>الاسم بالكامل<input name="name" type="text" autocomplete="name" placeholder="اكتب اسمك" required></label><label>رقم الهاتف<input name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9٠-٩+()\s-]{8,}" placeholder="01xxxxxxxxx" required></label><label>الخدمة<select name="service" required><option value="">اختر الخدمة</option><option>الكشف والتنظيف</option><option>تجميل الأسنان</option><option>علاج وترميم</option></select></label><div class="form-row"><label>التاريخ<input name="date" type="date" required></label><label>الوقت<select name="time" required><option value="">اختر الوقت</option><option>10:00 صباحاً</option><option>01:00 ظهراً</option><option>05:00 مساءً</option><option>08:00 مساءً</option></select></label></div><button class="primary-button" type="submit">تأكيد طلب الحجز <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M4 14 14 4M6 4h8v8"/></svg></span></button><p class="form-message" role="status"></p></form></section>
+    <section class="booking page-grid" id="booking"><div class="booking-intro"><p class="eyebrow"><span class="eyebrow-dot"></span> حجز موعد</p><h2>اختار ميعادك<br><em>واحنا نهتم بالباقي.</em></h2><p>املأ البيانات وسنتواصل معك لتأكيد الموعد.</p></div><form id="booking-form" class="booking-form" action="https://formspree.io/f/xyeyneqy" method="POST"><label>الاسم بالكامل<input name="name" type="text" autocomplete="name" placeholder="اكتب اسمك" required></label><label>رقم الهاتف<input name="phone" type="tel" inputmode="numeric" autocomplete="tel" pattern="^01\d{9}$" maxlength="11" placeholder="01xxxxxxxxx" required></label><label>الخدمة<select name="service" required><option value="">اختر الخدمة</option><option>الكشف والتنظيف</option><option>تجميل الأسنان</option><option>علاج وترميم</option></select></label><div class="form-row"><label>التاريخ<input name="date" type="date" required></label><label>الوقت<select name="time" required><option value="">اختر الوقت</option><option>10:00 صباحاً</option><option>01:00 ظهراً</option><option>05:00 مساءً</option><option>08:00 مساءً</option></select></label></div><button class="primary-button" type="submit">تأكيد طلب الحجز <span class="icon-arrow" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M4 14 14 4M6 4h8v8"/></svg></span></button><p class="form-message" role="status"></p></form></section>
 
     <section class="faq page-grid" id="faq">
-      <div class="section-heading reveal"><div class="section-label"><span>03</span><span>أسئلة شائعة</span></div><p>كل التفاصيل<br>قبل زيارتك.</p></div>
+      <div class="section-heading reveal"><div class="section-label"><span>03</span><span>قبل زيارتك</span></div><p>كل ما تحتاجه<br>لرحلة مريحة.</p></div>
       <div class="faq-list">
-        <details class="faq-item reveal" open><summary>هل أحتاج إلى حجز مسبق؟ <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></span></summary><p>نعم، الحجز المسبق يساعدنا على تخصيص الوقت المناسب لك وتقليل وقت الانتظار.</p></details>
-        <details class="faq-item reveal"><summary>كيف يتم تأكيد الموعد؟ <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></span></summary><p>بعد إرسال الطلب سنتواصل معك هاتفياً أو عبر واتساب لتأكيد اليوم والوقت.</p></details>
-        <details class="faq-item reveal"><summary>هل يمكنني اختيار خدمة مختلفة عند الزيارة؟ <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4"/></svg></span></summary><p>بالتأكيد. نبدأ بفحص بسيط ونشرح لك الخيارات المناسبة قبل اتخاذ أي قرار.</p></details>
+        <article class="faq-item reveal">
+          <span class="faq-step">01</span>
+          <div class="faq-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2v3M17 2v3M4 8h16M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v11A1.5 1.5 0 0 1 19 18.5H5A1.5 1.5 0 0 1 3.5 17V7A1.5 1.5 0 0 1 5 5.5Z"/><path d="M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01"/></svg></div>
+          <div class="faq-copy"><h3>احجز الموعد المناسب</h3><p>اختر الخدمة والتاريخ والوقت المناسب لك، وسنراجع طلبك بسرعة.</p></div>
+        </article>
+        <article class="faq-item reveal">
+          <span class="faq-step">02</span>
+          <div class="faq-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 11.5 10.5 14l5-6M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg></div>
+          <div class="faq-copy"><h3>تأكيد الحجز</h3><p>بعد إرسال الطلب سنتواصل معك هاتفياً أو عبر واتساب لتأكيد الموعد بدقة.</p></div>
+        </article>
+        <article class="faq-item reveal">
+          <span class="faq-step">03</span>
+          <div class="faq-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-7-10.2A4.08 4.08 0 0 1 9.1 6a4.36 4.36 0 0 1 2.9 1.26A4.36 4.36 0 0 1 14.9 6 4.08 4.08 0 0 1 19 9.8C19 15.65 12 20 12 20Z"/></svg></div>
+          <div class="faq-copy"><h3>الزيارة والراحة</h3><p>في العيادة نبدأ بفحص بسيط ونشرح لك الخيارات المناسبة قبل اتخاذ أي قرار.</p></div>
+        </article>
       </div>
     </section>
 
