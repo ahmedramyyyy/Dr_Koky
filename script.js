@@ -138,8 +138,10 @@ function applyLanguage(language) {
   document.querySelector('.faq .section-label span:last-child').textContent = text.faqLabel;
   document.querySelector('.faq .section-heading p').innerHTML = text.faqTitle;
   document.querySelectorAll('.faq-item').forEach((item, index) => {
-    item.querySelector('summary').firstChild.textContent = `${text.faqQuestions[index]} `;
-    item.querySelector('p').textContent = text.faqAnswers[index];
+    const heading = item.querySelector('h3');
+    const copy = item.querySelector('p');
+    if (heading) heading.textContent = text.faqQuestions[index];
+    if (copy) copy.textContent = text.faqAnswers[index];
   });
 }
 
@@ -168,13 +170,8 @@ dateInput.addEventListener('input', validateAppointmentDate);
 dateInput.addEventListener('change', validateAppointmentDate);
 
 function validatePhoneNumber() {
-  const digits = phoneInput.value.replace(/\D/g, '');
-  if (digits.length > 0 && digits.length !== 11) {
-    phoneInput.setCustomValidity(currentLanguage === 'ar' ? 'يجب أن يكون رقم الهاتف 11 رقم.' : 'Phone number must be 11 digits.');
-    phoneInput.setAttribute('aria-invalid', 'true');
-    formMessage.textContent = currentLanguage === 'ar' ? 'رقم الهاتف يجب أن يكون 11 رقم.' : 'Phone number must be 11 digits.';
-    return false;
-  }
+  const digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+  phoneInput.value = digits;
 
   if (digits.length === 0) {
     formMessage.textContent = '';
@@ -183,7 +180,13 @@ function validatePhoneNumber() {
     return true;
   }
 
-  phoneInput.value = digits;
+  if (!/^01\d{9}$/.test(digits)) {
+    phoneInput.setCustomValidity(currentLanguage === 'ar' ? 'يجب أن يبدأ رقم الهاتف بـ 01 ويكون 11 رقم.' : 'Phone number must start with 01 and contain 11 digits.');
+    phoneInput.setAttribute('aria-invalid', 'true');
+    formMessage.textContent = currentLanguage === 'ar' ? 'رقم الهاتف يجب أن يبدأ بـ 01 ويكون 11 رقم.' : 'Phone number must start with 01 and contain 11 digits.';
+    return false;
+  }
+
   phoneInput.setCustomValidity('');
   phoneInput.setAttribute('aria-invalid', 'false');
   formMessage.textContent = '';
